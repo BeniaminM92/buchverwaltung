@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Willkommen bei BuchKlub{% endblock %}
+
+{% block headline %}
+    <div class="text-center py-4">
+        <h1 class="display-4">Willkommen bei <span class="text-success">BuchKlub</span></h1>
+        <p class="lead text-muted">Ihr System zur Verwaltung und Entdeckung Ihrer Lieblingsbücher.</p>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-center">
+            <h2 class="mb-4">Entdecken Sie die Welt der Literatur</h2>
+            <p class="mb-4 text-muted">Mit <strong>BuchKlub</strong> können Sie Bücher organisieren, Ihre Sammlung pflegen und neue Titel entdecken. Unser benutzerfreundliches System hilft Ihnen dabei, Ihre Lesereise zu bereichern.</p>
+            <a href="{{ path('app_book_index') }}" class="btn btn-success btn-lg">
+                <i class="fa-solid fa-book-open me-2"></i>
+                Zu Ihrer Sammlung
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

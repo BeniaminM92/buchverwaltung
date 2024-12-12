@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bücherübersicht{% endblock %}
+
+{% block headline %}
+    <div class="text-center py-4">
+        <h1 class="display-4">Ihre <span class="text-success">Bücherübersicht</span></h1>
+        <p class="lead text-muted">Verwalten Sie Ihre Sammlung mit einem Klick.</p>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <!-- Add New Book Button -->
+        <div class="d-flex justify-content-between align-items-center my-4">
+            <h2 class="text-muted">Bücher</h2>
+            <a href="{{ path('app_book_new') }}" class="btn btn-outline-success btn-lg">
+                <i class="fa-solid fa-plus me-2"></i>
+                Neues Buch hinzufügen
+            </a>
+        </div>
+
+        <!-- Books List -->
+        <ul class="list-group">
+            {% for book in books %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ book.title }}</strong>
+                        <p class="mb-0 text-muted small">{{ book.author }}</p>
+                    </div>
+                    <div>
+                        <a href="{{ path('app_book_show', { id: book.id }) }}" class="btn btn-success btn-sm">
+                            <i class="fa-solid fa-book me-1"></i>
+                            Details
+                        </a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="list-group-item text-center text-muted">Keine Bücher verfügbar.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

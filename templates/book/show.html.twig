@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Buchdetails{% endblock %}
+
+{% block headline %}
+    <div class="text-center py-4">
+        <h1 class="display-4">Details zu <span class="text-success">{{ book.getTitle() }}</span></h1>
+        <p class="lead text-muted">Hier finden Sie alle Informationen zu diesem Buch.</p>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ book.getTitle() }}</h2>
+                <h5 class="card-subtitle text-muted mb-3">von {{ book.getAuthor() }}</h5>
+                <p class="mb-1"><strong>Genre:</strong> {{ book.genre.value ?? '' }}
+                <p class="mb-1"><strong>Seiten:</strong> {{ book.getPages() }}</p>
+                <p class="mb-1"><strong>Verlag:</strong> {{ book.getPublisher() }}</p>
+                <p class="mb-1"><strong>Email des Verlags:</strong> {{ book.getPublisherEmail() }}</p>
+                <p class="mb-1"><strong>Veröffentlichungsdatum:</strong> {{ book.getPublishedAtString() }}</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="{{ path('app_book_edit', { id: book.getId() }) }}" class="btn btn-outline-warning">
+                <i class="fa-solid fa-pen me-2"></i>
+                Bearbeiten
+            </a>
+            <a href="{{ path('app_book_delete', { id: book.getId() }) }}" class="btn btn-outline-danger">
+                <i class="fa-solid fa-trash me-2"></i>
+                Löschen
+            </a>
+            <a href="{{ path('app_book_index') }}" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left me-2"></i>
+                Zurück zur Übersicht
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
