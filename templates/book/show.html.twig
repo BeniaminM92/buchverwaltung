@@ -18,7 +18,7 @@
 {#                {% for x in genre %}#}
 {#                    <p class="mb-1"><strong>Genre:</strong> {{ book.genre ?? '' }}#}
 {#                {% endfor %}#}
-                <p class="mb-1"><strong>Genre:</strong> {{ book.genre ?? '' }}
+                <p class="mb-1"><strong>Genre:</strong> {{ book.genre.value ?? '' }}
                 <p class="mb-1"><strong>Seiten:</strong> {{ book.getPages() }}</p>
                 <p class="mb-1"><strong>Verlag:</strong> {{ book.getPublisher() }}</p>
                 <p class="mb-1"><strong>Email des Verlags:</strong> {{ book.getPublisherEmail() }}</p>
