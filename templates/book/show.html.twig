@@ -15,7 +15,10 @@
             <div class="card-body">
                 <h2 class="card-title">{{ book.getTitle() }}</h2>
                 <h5 class="card-subtitle text-muted mb-3">von {{ book.getAuthor() }}</h5>
-                <p class="mb-1"><strong>Genre:</strong> {{ book.genre.value ?? '' }}
+{#                {% for x in genre %}#}
+{#                    <p class="mb-1"><strong>Genre:</strong> {{ book.genre ?? '' }}#}
+{#                {% endfor %}#}
+                <p class="mb-1"><strong>Genre:</strong> {{ book.genre ?? '' }}
                 <p class="mb-1"><strong>Seiten:</strong> {{ book.getPages() }}</p>
                 <p class="mb-1"><strong>Verlag:</strong> {{ book.getPublisher() }}</p>
                 <p class="mb-1"><strong>Email des Verlags:</strong> {{ book.getPublisherEmail() }}</p>
