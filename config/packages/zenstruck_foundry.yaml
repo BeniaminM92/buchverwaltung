@@ -2,7 +2,7 @@ when@dev: &dev
     # See full configuration: https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#full-default-bundle-configuration
     zenstruck_foundry:
         faker:
-            seed: 100
-            locale: de_DE
+#            seed: 10
+#            locale: de_DE
 
 when@test: *dev

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Übersicht: Bücher{% endblock %}
+{% block title %}Übersicht: AutorInnen{% endblock %}
 
 {% block headline %}
     <div class="text-center py-4">
-        <h1 class="display-4">Ihre <span class="text-success">Übersicht: Bücher</span></h1>
+        <h1 class="display-4">Ihre <span class="text-success">Übersicht AutorInnen</span></h1>
         <p class="lead text-muted">Verwalten Sie Ihre Sammlung mit einem Klick.</p>
     </div>
 {% endblock %}
@@ -13,24 +13,24 @@
     <div class="container">
         <!-- Add New Book Button -->
         <div class="d-flex justify-content-between align-items-center my-4">
-            <h2 class="text-muted">Bücher</h2>
-            <a href="{{ path('app_book_new') }}" class="btn btn-outline-success btn-lg">
-                <i class="fa-solid fa-plus me-2"></i>
-                Neues Buch hinzufügen
-            </a>
+            <h2 class="text-muted">AutorInnen</h2>
+{#            <a href="{{ path('app_author_new') }}" class="btn btn-outline-success btn-lg">#}
+{#                <i class="fa-solid fa-plus me-2"></i>#}
+{#                Neue/n AutorIn hinzufügen#}
+{#            </a>#}
         </div>
 
         <!-- Books List -->
         <ul class="list-group">
-            {% for book in books %}
+            {% for author in authors %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
-                        <strong>{{ book.title }}</strong>
-                        <p class="mb-0 text-muted small">{{ book.author.fname }} {{ book.author.lname }}</p>
+{#                        <strong>{{ book.title }}</strong>#}
+                        <p class="mb-0 text-muted small">{{ author.fname }} {{ author.lname }}</p>
                     </div>
                     <div>
-                        <a href="{{ path('app_book_show', { id: book.id }) }}" class="btn btn-success btn-sm">
-                            <i class="fa-solid fa-book me-1"></i>
+                        <a href="{{ path('app_author_show', { id: author.id }) }}" class="btn btn-success btn-sm">
+                            <i class="fa-solid fa-author me-1"></i>
                             Details
                         </a>
                     </div>

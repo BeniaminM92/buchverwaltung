@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Enum\GenreEnum;
 use App\Repository\BookRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -22,9 +24,6 @@ class Book
     #[Assert\NotBlank(message: 'Das darf nicht leer sein')]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $author = null;
-
     #[ORM\Column]
     private ?int $pages = null;
 
@@ -39,6 +38,20 @@ class Book
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, enumType: GenreEnum::class)]
     private array $genre = [];
+
+    #[ORM\ManyToOne(inversedBy: 'books')]
+    private ?Author $author = null;
+
+    /**
+     * @var Collection<int, Supplier>
+     */
+    #[ORM\ManyToMany(targetEntity: Supplier::class, mappedBy: 'books')]
+    private Collection $suppliers;
+
+    public function __construct()
+    {
+        $this->suppliers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -57,17 +70,17 @@ class Book
         return $this;
     }
 
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): static
-    {
-        $this->author = $author;
-
-        return $this;
-    }
+//    public function getAuthor(): ?string
+//    {
+//        return $this->author;
+//    }
+//
+//    public function setAuthor(string $author): static
+//    {
+//        $this->author = $author;
+//
+//        return $this;
+//    }
 
     public function getPages(): ?int
     {
@@ -149,6 +162,45 @@ class Book
         }
         // Return an empty string or throw an exception if $publishedAt is null
         return '';
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): static
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Supplier>
+     */
+    public function getSuppliers(): Collection
+    {
+        return $this->suppliers;
+    }
+
+    public function addSupplier(Supplier $supplier): static
+    {
+        if (!$this->suppliers->contains($supplier)) {
+            $this->suppliers->add($supplier);
+            $supplier->addBook($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSupplier(Supplier $supplier): static
+    {
+        if ($this->suppliers->removeElement($supplier)) {
+            $supplier->removeBook($this);
+        }
+
+        return $this;
     }
 
 }

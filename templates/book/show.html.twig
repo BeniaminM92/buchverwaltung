@@ -14,7 +14,8 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h2 class="card-title">{{ book.getTitle() }}</h2>
-                <h5 class="card-subtitle text-muted mb-3">von {{ book.getAuthor() }}</h5>
+
+                <h5 class="card-subtitle text-muted mb-3">von {{ book.author.fname }} {{ book.author.lname }}</h5>
 {#                {% for x in genre %}#}
 {#                    <p class="mb-1"><strong>Genre:</strong> {{ book.genre ?? '' }}#}
 {#                {% endfor %}#}
@@ -31,6 +32,12 @@
                 <i class="fa-solid fa-pen me-2"></i>
                 Bearbeiten
             </a>
+            {% if book.author %}
+            <a href="{{ path('app_book_edit', { id: book.getId() }) }}" class="btn btn-outline-warning">
+                <i class="fa-solid fa-pen me-2"></i>
+                Author ändern
+            </a>
+            {% endif %}
             <a href="{{ path('app_book_delete', { id: book.getId() }) }}" class="btn btn-outline-danger">
                 <i class="fa-solid fa-trash me-2"></i>
                 Löschen
