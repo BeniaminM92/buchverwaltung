@@ -115,4 +115,9 @@ class Author
 
         return $this;
     }
+
+    public function fullName(): string {
+        return $this->fname . ' ' . $this->lname;
+    }
+
 }

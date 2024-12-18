@@ -24,6 +24,10 @@
                 <p class="mb-1"><strong>Verlag:</strong> {{ book.getPublisher() }}</p>
                 <p class="mb-1"><strong>Email des Verlags:</strong> {{ book.getPublisherEmail() }}</p>
                 <p class="mb-1"><strong>Veröffentlichungsdatum:</strong> {{ book.getPublishedAtString() }}</p>
+                <strong>Händler:</strong>
+                {% for supplier in book.suppliers %}
+                    <p class="mb-1"> {{ supplier.name }}</p>
+                {% endfor %}
             </div>
         </div>
 

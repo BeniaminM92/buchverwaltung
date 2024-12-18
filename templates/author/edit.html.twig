@@ -33,30 +33,6 @@
                     {{ form_errors(form.genre) }}
                 </div>
 
-                <div class="mb-3">
-                    {{ form_label(form.pages, 'Seiten', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(form.pages, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(form.pages) }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form_label(form.publisher, 'Verlag', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(form.publisher, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(form.publisher) }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form_label(form.publisherEmail, 'Email des Verlags', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(form.publisherEmail, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(form.publisherEmail) }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form_label(form.publishedAt, 'Veröffentlichungsdatum', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(form.publishedAt, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(form.publishedAt) }}
-                </div>
-
                 {{ form_end(form) }}
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-success">

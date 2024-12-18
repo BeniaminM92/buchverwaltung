@@ -7,6 +7,7 @@ use App\Entity\Book;
 use App\Form\BookFormType;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -92,4 +93,14 @@ class BookController extends AbstractController
             return $this->render('book/new.html.twig',['form' => $form->createView()]);
         }
     }
+
+    #[Route('/api')]
+    public function jsonstring(BookRepository $bookRepository): JsonResponse
+    {
+        $object = $bookRepository->find();
+        $data = ['id' => 1, 'book'=> 1374];
+
+        return $this->json($data);
+    }
+
 }

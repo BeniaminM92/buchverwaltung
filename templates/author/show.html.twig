@@ -2,37 +2,41 @@
 
 {% block title %}AutorInnen Details{% endblock %}
 
-{#{% block headline %}#}
-{#    <div class="text-center py-4">#}
-{#        <h1 class="display-4">Details zu <span class="text-success">{{ book.getTitle() }}</span></h1>#}
-{#        <p class="lead text-muted">Hier finden Sie alle Informationen zu diesem Buch.</p>#}
-{#    </div>#}
-{#{% endblock %}#}
+{% block headline %}
+    <div class="text-center py-4">
+        <h1 class="display-4">Details zu <span class="text-success">{{ author.fullName() }}</span></h1>
+        <p class="lead text-muted">Hier finden Sie alle Informationen.</p>
+    </div>
+{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="card mb-4">
             <div class="card-body">
-                <h5 class="card-subtitle text-muted mb-3">von {{ author.fname }} {{ author.lname }}</h5>
+                <h5 class="card-title">{{ author.fname }} {{ author.lname }}</h5>
                 <p class="mb-1"><strong>Geburtsdatum:</strong> {{ author.getBirthdateString() }}</p>
+                <strong>Bücher:</strong>
+                {% for x in author.books %}
+                    <p class="mb-1"> {{ x.title }}</p>
+                {% endfor %}
             </div>
         </div>
 
         <div class="d-flex justify-content-between">
-{#            <a href="{{ path('app_author_edit', { id: author.getId() }) }}" class="btn btn-outline-warning">#}
-{#                <i class="fa-solid fa-pen me-2"></i>#}
-{#                Bearbeiten#}
-{#            </a>#}
-{#            {% if author.author %}#}
-{#                <a href="{{ path('app_author_edit', { id: author.getId() }) }}" class="btn btn-outline-warning">#}
-{#                    <i class="fa-solid fa-pen me-2"></i>#}
-{#                    Author ändern#}
-{#                </a>#}
-{#            {% endif %}#}
-{#            <a href="{{ path('app_author_delete', { id: author.getId() }) }}" class="btn btn-outline-danger">#}
-{#                <i class="fa-solid fa-trash me-2"></i>#}
-{#                Löschen#}
-{#            </a>#}
+            <a href="{{ path('app_author_edit', { id: author.getId() }) }}" class="btn btn-outline-warning">
+                <i class="fa-solid fa-pen me-2"></i>
+                Bearbeiten
+            </a>
+            {% if author.books %}
+                <a href="{{ path('app_book_edit', { id: author.getId() }) }}" class="btn btn-outline-warning">
+                    <i class="fa-solid fa-pen me-2"></i>
+                    Bücher ändern
+                </a>
+            {% endif %}
+            <a href="{{ path('app_author_delete', { id: author.getId() }) }}" class="btn btn-outline-danger">
+                <i class="fa-solid fa-trash me-2"></i>
+                Löschen
+            </a>
             <a href="{{ path('app_book_index') }}" class="btn btn-outline-secondary">
                 <i class="fa-solid fa-arrow-left me-2"></i>
                 Zurück zur Übersicht

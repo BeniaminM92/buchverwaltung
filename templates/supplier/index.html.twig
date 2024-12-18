@@ -1,42 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Übersicht: AutorInnen{% endblock %}
+{% block title %}Übersicht: Händler{% endblock %}
 
 {% block headline %}
     <div class="text-center py-4">
-        <h1 class="display-4">Ihre <span class="text-success">Übersicht AutorInnen</span></h1>
-        <p class="lead text-muted">Verwalten Sie Ihre Sammlung mit einem Klick.</p>
+        <h1 class="display-4">Ihre <span class="text-success">Übersicht: Händler</span></h1>
+        <p class="lead text-muted">Verwalten Sie Ihre Lieferanten auf einen Blick.</p>
     </div>
 {% endblock %}
 
 {% block body %}
     <div class="container">
-        <!-- Add New Book Button -->
+        <!-- Add New Supplier Button -->
         <div class="d-flex justify-content-between align-items-center my-4">
-            <h2 class="text-muted">AutorInnen</h2>
-            <a href="{{ path('app_author_new') }}" class="btn btn-outline-success btn-lg">
+            <h2 class="text-muted">Händler</h2>
+            <a href="{{ path('app_supplier_new') }}" class="btn btn-outline-success btn-lg">
                 <i class="fa-solid fa-plus me-2"></i>
-                Neue/n AutorIn hinzufügen
+                Neuen Händler hinzufügen
             </a>
         </div>
 
-        <!-- Books List -->
+        <!-- Supplier List -->
         <ul class="list-group">
-            {% for author in authors %}
+            {% for supplier in suppliers %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
-                        <strong>{{ author.fullName }}</strong>
-{#                        <p class="mb-0 text-muted small">{{ author.fname }} {{ author.lname }}</p>#}
+                        <strong>{{ supplier.name }}</strong>
+                        <p class="mb-0 text-muted small">{{ supplier.address }}</p>
                     </div>
                     <div>
-                        <a href="{{ path('app_author_show', { id: author.id }) }}" class="btn btn-success btn-sm">
-                            <i class="fa-solid fa-author me-1"></i>
+                        <a href="{{ path('app_supplier_show', { id: supplier.id }) }}" class="btn btn-success btn-sm">
+                            <i class="fa-solid fa-building me-1"></i>
                             Details
                         </a>
                     </div>
                 </li>
             {% else %}
-                <li class="list-group-item text-center text-muted">Keine Bücher verfügbar.</li>
+                <li class="list-group-item text-center text-muted">Keine Händler verfügbar.</li>
             {% endfor %}
         </ul>
     </div>
@@ -58,5 +58,5 @@
 {% endblock %}
 
 {% block javascript %}
-
+<!-- Add any supplier-specific JavaScript here -->
 {% endblock %}
