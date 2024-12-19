@@ -88,7 +88,7 @@ class AuthorController extends AbstractController
             $form = $this->createForm(AuthorFormType::class, $author);
 
 
-            return $this->render('author/new.html.twig',['form' => $form->createView()]);
+            return $this->render('author/new.html.twig', ['form' => $form->createView()]);
         }
     }
 
